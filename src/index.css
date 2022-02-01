@@ -1,0 +1,90 @@
+:root {
+  --background-dark: rgba(0, 0, 0, 0.884);
+  --background-light: white;
+}
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper-light {
+  background-color: var(--background-light);
+}
+
+.wrapper-dark {
+  background-color: var(--background-dark);
+}
+
+.loading-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  margin: 22%;
+}
+
+.loading-bar__round {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 20px;
+}
+
+.loading-bar__round-green {
+  background-color: green;
+}
+
+.loading-bar__round-red {
+  background-color: red;
+}
+
+.loading-bar__round-yellow {
+  background-color: yellow;
+}
+
+.loading-bar__round-aqua {
+  background-color: aqua;
+}
+
+.loading-bar__round-lightgray {
+  background-color: lightgrey;
+}
+
+.loading-bar__round-gray {
+  background-color: gray;
+}
+
+.show-more {
+  width: 150px;
+  height: 50px;
+  font-size: 1.2rem;
+
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+
+  margin-bottom: 3%;
+}
+
+.theme-buttons {
+  display: flex;
+  justify-content: space-between;
+}

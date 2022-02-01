@@ -1,0 +1,26 @@
+.post-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    padding: 170px 190px 30px;
+}
+
+.post-form {
+    min-width: 100px;
+    margin: 15px;
+
+    width: 255px;
+    height: 500px;
+
+    border: 2px solid lightgrey;
+    border-radius: 3px;   
+}
+
+.post-form-light {
+    background-color: white;
+}
+
+.post-form-dark {
+    background-color: rgb(95, 75, 139);
+}
