@@ -1,0 +1,38 @@
+.loading-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  
+    margin: 22%;
+  }
+  
+  .loading-bar__round {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 20px;
+  }
+  
+  .loading-bar__round-green {
+    background-color: green;
+  }
+  
+  .loading-bar__round-red {
+    background-color: red;
+  }
+  
+  .loading-bar__round-yellow {
+    background-color: yellow;
+  }
+  
+  .loading-bar__round-aqua {
+    background-color: aqua;
+  }
+  
+  .loading-bar__round-lightgray {
+    background-color: lightgrey;
+  }
+  
+  .loading-bar__round-gray {
+    background-color: gray;
+  }

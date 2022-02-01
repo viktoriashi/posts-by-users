@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import PostsContainer from './components/PostsContainer';
 import ThemeContext from './context';
 import Button from './components/Button';
+import Loader from './components/Loader';
 
 export type ThemeType = 'light' | 'dark'
 
@@ -61,7 +62,6 @@ const App: React.FC = () => {
         (result) => {
           setIsLoaded(true);
           setItems(result);
-          console.log(result)
         },
         (error) => {
           setIsLoaded(true);
@@ -74,7 +74,6 @@ const App: React.FC = () => {
         (result) => {
           setIsLoaded(true);
           setUsers(result);
-          console.log(result)
         },
         (error) => {
           setIsLoaded(true);
@@ -86,16 +85,7 @@ const App: React.FC = () => {
   if (error) {
     return <div>Ошибка</div>;
   } else if (!isLoaded) {
-    return (
-      <div className='loading-bar'>
-        <div className='loading-bar__round loading-bar__round-green'/>
-        <div className='loading-bar__round loading-bar__round-red'/>
-        <div className='loading-bar__round loading-bar__round-yellow'/>
-        <div className='loading-bar__round loading-bar__round-aqua'/>
-        <div className='loading-bar__round loading-bar__round-lightgray'/>
-        <div className='loading-bar__round loading-bar__round-gray'/>
-      </div>
-      );
+    return <Loader/>;
   } else {
     return (
         <div className={`wrapper ${themeType === 'light' ? "wrapper-light" : "wrapper-dark"}`}>
