@@ -17,7 +17,7 @@ const GridContainer: React.FC<GridProps> = ({posts, users}) => {
             { posts.map((post, index) => {
                 let user = users[index] 
                 return (    
-                    <Grid item m={'15px'}>
+                    <Grid item key={post.id} m={'15px'}>
                         <Post post={post} user={user}></Post>
                     </Grid>
                 )
