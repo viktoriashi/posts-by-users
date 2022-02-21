@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { IPost, IUser } from "../../App";
-import Post from '../Post'
-import './PostsContainer.css'
-import ThemeContext from '../../context';
+import GridContainer from '../GridContainer';
+const _ = require('lodash')
 
 
 interface PostsContainerProps {
@@ -11,24 +10,25 @@ interface PostsContainerProps {
     amount: number
 }
 
+
 const PostsContainer: React.FC<PostsContainerProps> = ({posts, users, amount}) => {
 
-    const {themeType, setThemeType} = useContext(ThemeContext);
+    const proccessPosts = (posts: Array<IPost>, amount: number) => {
+        return posts.slice(0, amount) 
+    };
+
+    const proccessUsers = (posts: Array<IPost>, users: Array<IUser>) => {
+        const newUsers: Array<IUser | undefined> = [];
+        posts.forEach( post => {
+            let user: IUser|undefined = users.find(user => user?.id === post.userId);
+            newUsers.push(user);
+        });
+        return newUsers
+    };
 
     return (
-        <div className="post-container">
-            { posts.slice(0, amount).map(post => {
-                let user: IUser|undefined = users.find(user => user.id === post.userId)
-                return (
-                    <div className={`post-form ${themeType === 'light' ? "post-form-light" : "post-form-dark"}`} key={post.id}>
-                        <Post post={post} user={user}></Post>
-                    </div>
-                )
-            })}
-        </div>
+        <GridContainer posts = {proccessPosts(posts, amount)} users = { proccessUsers(proccessPosts(posts, amount), users)}/>
     )
 }
-
-
 
 export default PostsContainer

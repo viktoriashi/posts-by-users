@@ -26,15 +26,15 @@ code {
   align-items: center;
 }
 
-.wrapper-light {
+.wrapperLight {
   background-color: var(--background-light);
 }
 
-.wrapper-dark {
+.wrapperDark {
   background-color: var(--background-dark);
 }
 
-.theme-buttons {
+.themeButtons {
   display: flex;
   justify-content: space-between;
 }

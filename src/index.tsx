@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { BrowserRouter } from "react-router-dom";
 import App from './App';
 import ThemeContext from './context';
 import { ThemeType } from "./App";
@@ -18,6 +18,9 @@ function Main() {
 }
 
 ReactDOM.render(
-  <Main/>,
+  <BrowserRouter>
+    <Main/>
+  </BrowserRouter>,
   document.getElementById('root')
+  
 );
