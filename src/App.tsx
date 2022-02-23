@@ -7,6 +7,8 @@ import Button from './components/Button';
 import Loader from './components/Loader';
 import classNames from 'classnames';
 import styles from './index.module.css';
+import usePosts from './usePosts';
+import useUsers from './useUsers'
 
 export type ThemeType = 'light' | 'dark'
 
@@ -44,13 +46,6 @@ export interface IUser {
 
 const App: React.FC = () => {
 
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  const [users, setUsers] = useState<IUser[]>([]);
-  const [items, setItems] = useState<IPost[]>([]);
-  
-
   const navigate = useNavigate()
     
   let queryParams = new URLSearchParams(window.location.search);
@@ -69,28 +64,13 @@ const App: React.FC = () => {
       
   const {themeType, setThemeType} = useContext(ThemeContext);
 
+  const {items, errorPosts, isLoadedPosts} = usePosts('https://jsonplaceholder.typicode.com/posts')
+  const {users, errorUsers, isLoadedUsers} = useUsers('https://jsonplaceholder.typicode.com/users')
 
-  useEffect(() => {
-      let urls = ['https://jsonplaceholder.typicode.com/posts',
-                  'https://jsonplaceholder.typicode.com/users']
-      
-      let requests = urls.map(url => fetch(url));
 
-      Promise.all(requests)
-        .then(responses => Promise.all(responses.map(r => r.json())))
-        .then(results => {
-          setItems(results[0]);
-          setUsers(results[1]);
-          setIsLoaded(true);
-        }).catch((error) => {
-          setIsLoaded(true);
-          setError(error);
-        });
-  }, [])
-
-  if (error) {
+  if (errorPosts || errorUsers) {
     return <div>Ошибка</div>;
-  } else if (!isLoaded) {
+  } else if (!isLoadedPosts || !isLoadedUsers) {
     return <Loader/>;
   } else {
     return (
