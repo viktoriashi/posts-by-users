@@ -1,0 +1,129 @@
+:root {
+    --background-dark: rgba(0, 0, 0, 0.884);
+    --background-light: white;
+  }
+  
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .wrapperLight {
+    background-color: var(--background-light);
+  }
+  
+  .wrapperDark {
+    background-color: var(--background-dark);
+  }
+
+.container {
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.postForm {
+
+    width: 70vw;
+    height: 70vh;
+
+    border: 2px solid lightgrey;
+    border-radius: 3px;   
+}
+
+.formLight {
+    background-color: white;
+}
+
+.formDark {
+    background-color: rgb(95, 75, 139);
+}
+
+.description {
+    width: inherit;
+    min-width: 255px;
+    height: inherit;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: inherit;
+}
+
+.descriptionLight {
+    color: black;
+}
+
+.descriptionDark {
+    color: white;
+}
+
+.postContent {
+    width: 30%;
+}
+
+.title {
+    font-size: 2.3rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 8%;
+}
+
+.body {
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 3% 15%;
+}
+
+.commentsArea {    
+    width: 70%;
+    height: inherit;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.commentsLight {
+    background-color: lightgrey;
+}
+
+.commentsDark {
+    background-color: rgba(73, 17, 64, 0.377);
+}
+
+.comments {
+    margin: 3% 6%;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.commentName {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.commentBody {
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+.commentEmail {
+    font-size: 1.2rem;
+    color: blue;
+}
+
+.commentsMainText {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 25px;
+    font-size: 1.8rem;
+}

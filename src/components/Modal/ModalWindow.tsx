@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { IUser } from '../../App';
+import { IUser } from '../Router/Router';
 import styles from './ModalWindow.module.css';
 import closeIcon from '../../images/close-icon.png'
 import ThemeContext from '../../context';

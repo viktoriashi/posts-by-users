@@ -1,5 +1,6 @@
 {
   "name": "post-by-users",
+  "homepage": "/posts",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

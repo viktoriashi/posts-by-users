@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import { IUser } from "./App";
+import { IUser } from "./components/Router/Router";
 
-const useUsers = (url: string) => {
+const useUsers = () => {
   const [users, setUsers] = useState<IUser[]>([]);
   const [errorUsers, setError] = useState(null);
   const [isLoadedUsers, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    fetch(url)
+    fetch('https://jsonplaceholder.typicode.com/users')
     .then(res => res.json())
       .then(
         (result) => {

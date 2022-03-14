@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import { IPost } from "./App";
+import { IPost } from "./components/Router/Router";
 
-const usePosts = (url: string) => {
+const usePosts = () => {
   const [items, setItems] = useState<IPost[]>([]);
   const [errorPosts, setError] = useState(null);
   const [isLoadedPosts, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    fetch(url)
+    fetch('https://jsonplaceholder.typicode.com/posts')
     .then(res => res.json())
       .then(
         (result) => {

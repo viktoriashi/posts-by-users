@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styles from './GridContainer.module.css'
 import Grid from '@mui/material/Grid';
-import {IPost, IUser} from '../../App';
+import {IPost, IUser} from '../Router/Router';
 import Post from '../Post';
 
 

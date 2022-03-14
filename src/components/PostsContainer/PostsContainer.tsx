@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useState } from "react";
-import { IPost, IUser } from "../../App";
+import { IPost, IUser } from "../Router/Router";
 import GridContainer from '../GridContainer';
 const _ = require('lodash')
 

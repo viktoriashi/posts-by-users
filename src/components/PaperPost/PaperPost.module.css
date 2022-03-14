@@ -33,6 +33,11 @@
     color: white;
 }
 
+.link {
+    color: inherit;
+    text-decoration: inherit;
+}
+
 .title {
     font-size: 1.5rem;
     font-weight: 500;
