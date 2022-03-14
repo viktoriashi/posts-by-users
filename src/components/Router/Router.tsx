@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import App from '../../App';
-import PostWithComm from '../PostWithComments';
+import PostWithComments from '../PostWithComments';
 import usePosts from '../../usePosts';
 import useUsers from '../../useUsers';
 import Loader from "../Loader";
@@ -50,22 +50,13 @@ export interface IComment {
 
 const Router: React.FC = () => {
 
-    const {items, errorPosts, isLoadedPosts} = usePosts()
-    const {users, errorUsers, isLoadedUsers} = useUsers()
-    const {comments, errorComments, isLoadedComments} = useComments()
-
-    if (errorPosts || errorUsers || errorComments) {
-        return <div>Ошибка</div>;
-      } else if (!isLoadedPosts || !isLoadedUsers || !isLoadedComments) {
-        return <Loader/>;
-      } else {
-        return (
-            <Routes>
-              <Route path="/posts" element={<App posts={items} users={users}/>}/> 
-              <Route path="/posts/:id" element={<PostWithComm posts={items} comments={comments}/>} /> 
-            </Routes>
-        )
-      }
+    return (
+        <Routes>
+          <Route path="/posts" element={<App />}/> 
+          <Route path="/posts/:id" element={<PostWithComments />} /> 
+        </Routes>
+    )
+      
 }
 
 export default Router

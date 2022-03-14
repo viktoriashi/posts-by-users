@@ -4,29 +4,29 @@ import { IPost, IComment } from "../Router/Router";
 import ThemeContext from '../../context';
 import { useParams } from 'react-router-dom';
 import PostDetails from "../PostDetails";
+import Loader from '../Loader';
+import useOnePost from '../../useOnePost';
+import useComments from '../../useComments';
 
-interface PostWithCommProps {
-    posts: Array<IPost>
-    comments: Array<IComment>
-}
 
-const PostWithComm: React.FC<PostWithCommProps> = ({posts, comments}) => {
+const PostWithComments: React.FC = () => {
 
     const {themeType, setThemeType} = useContext(ThemeContext);
-    
+     
     let params = useParams()
-    let post: IPost|undefined = posts.find( post => post.id === Number(params.id))
-    let relevantComments:Array<IComment> = []
+    const {post, errorPost, isLoadedPost} = useOnePost(Number(params.id))
+    const {comments, errorComments, isLoadedComments} = useComments(Number(params.id))
 
-    comments.map((comment, index) => {
-        if (comment.postId === post?.id)
-            relevantComments.push(comment)
-    })
-   
-    return (
-        <PostDetails post={post} comments={relevantComments} themeType={themeType}/>
-    )
+    if (errorPost || errorComments) {
+        return <div>Ошибка</div>;
+      } else if (!isLoadedPost || !isLoadedComments) {
+        return <Loader/>;
+      } else {
+        return (
+            <PostDetails post={post} comments={comments} themeType={themeType}/>
+        )
+      }
 }
 
 
-export default PostWithComm
+export default PostWithComments

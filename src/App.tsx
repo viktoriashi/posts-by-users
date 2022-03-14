@@ -4,21 +4,21 @@ import { useNavigate } from 'react-router-dom';
 import PostsContainer from './components/PostsContainer';
 import ThemeContext from './context';
 import Button from './components/Button';
+import Loader from './components/Loader';
 import classNames from 'classnames';
 import styles from './index.module.css';
 import { IPost, IUser } from "./components/Router/Router";
+import usePosts from './usePosts';
+import useUsers from './useUsers';
 
 
 export type ThemeType = 'light' | 'dark'
 
 
-interface AppProps {
-  posts: Array<IPost>
-  users: Array<IUser>
-}
+const App: React.FC = () => {
 
-const App: React.FC<AppProps> = ({posts, users}) => {
-
+  const {items, errorPosts, isLoadedPosts} = usePosts()
+  const {users, errorUsers, isLoadedUsers} = useUsers()
   const navigate = useNavigate()
     
   let queryParams = new URLSearchParams(window.location.search);
@@ -37,6 +37,11 @@ const App: React.FC<AppProps> = ({posts, users}) => {
       
   const {themeType, setThemeType} = useContext(ThemeContext);
 
+  if (errorPosts || errorUsers) {
+    return <div>Ошибка</div>;
+  } else if (!isLoadedPosts || !isLoadedUsers) {
+    return <Loader/>;
+  } else {
     return (
         <div className = { classNames(styles.wrapper, {
             [styles.wrapperLight]: themeType === 'light',
@@ -50,10 +55,11 @@ const App: React.FC<AppProps> = ({posts, users}) => {
               Dark theme
             </Button>
           </div>
-          <PostsContainer posts={posts} users={users} amount={postAmount}> </PostsContainer>
+          <PostsContainer posts={items} users={users} amount={postAmount}> </PostsContainer>
           <Button type='default' onClick={changePostAmount}>Show more</Button>
         </div>
     );
+  }
 }
 
 export default App;
